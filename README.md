@@ -17,6 +17,10 @@ count of 1, it is only reachable via the GCs own `Rc`, not via any object
 reference, and can be freed immediately without having to perform a tracing
 phase.
 
+If there's a bug in the GC, and an object ends up getting collected while it's
+still reachable, any access to the object will fail to upgrade the `Weak`
+pointer and panic instead of becoming an unsafe use-after-free.
+
 Please refer to the [changelog](CHANGELOG.md) to see what changed in the last
 releases.
 
