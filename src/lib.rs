@@ -44,8 +44,6 @@ fashion, but that's not important here)
 
 #![doc(html_root_url = "https://docs.rs/rcgc/0.1.0")]
 
-pub use rcgc_derive::*;
-
 use log::trace;
 use std::cell::Cell;
 use std::fmt;
@@ -136,15 +134,15 @@ impl<T: Trace + ?Sized> GcData<T> {
 }
 
 /// A handle to a garbage-collected object of type `T`.
+///
+/// A handle does not by itself keep the object it points to alive.
 pub struct Handle<T: Trace + ?Sized> {
     inner: Weak<GcData<T>>,
 }
 
 impl<T: Trace> Handle<T> {
     fn from_weak(weak: Weak<GcData<T>>) -> Self {
-        Self {
-            inner: weak,
-        }
+        Self { inner: weak }
     }
 
     pub(crate) fn with<F, R>(&self, f: F) -> R
@@ -487,6 +485,27 @@ mod tests {
             assert_eq!(dropped_objects(), 2);
             drop(gc);
             assert_eq!(dropped_objects(), 2);
+        });
+    }
+
+    #[test]
+    fn collects_when_heap_grows() {
+        test(|mut gc| {
+            let mut roots = Vec::new();
+            for i in 0..100 {
+                let root = gc.allocate(Object::new());
+                if i % 4 == 0 {
+                    roots.push(root);
+                }
+            }
+
+            assert!(
+                gc.estimate_heap_size() < 50,
+                "GC did not collect when filling heap (heap size = {})",
+                gc.estimate_heap_size()
+            );
+
+            gc.force_full_collect();
         });
     }
 }

@@ -40,7 +40,6 @@ search  = "https://docs.rs/rcgc/[a-z0-9\\.-]+"
 replace = "https://docs.rs/rcgc/{{version}}"
 
 [dependencies]
-rcgc-derive = { path = "rcgc-derive" }
 log = "0.4.6"
 
 [dev-dependencies]
