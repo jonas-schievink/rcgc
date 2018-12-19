@@ -7,8 +7,7 @@
    cargo-release`.
    
    `<level>` can be one of `major|minor|patch`. If this is the first release
-   (`0.1.0`), don't specify the level at all or you will publish `0.1.1`
-   instead.
+   (`0.1.0`), use `minor`, since the version start out as `0.0.0`.
 
-3. Go to GitHub and "add release notes" to the just-pushed tag. Copy them from
-   the changelog.
+3. Go to the GitHub releases, edit the just-pushed tag. Copy the release notes
+   from the changelog.
