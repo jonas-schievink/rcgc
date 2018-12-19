@@ -2,14 +2,11 @@
 name = "rcgc"
 version = "0.0.0"
 authors = ["Jonas Schievink <jonasschievink@gmail.com>"]
-# TODO: Write description
-#description = ""
+description = "A tracing GC in safe Rust based on `Rc`"
 documentation = "https://docs.rs/rcgc/"
 repository = "https://github.com/jonas-schievink/rcgc.git"
-# TODO: Add up to 5 keywords
-#keywords = []
-# TODO: Add categories
-#categories = []
+keywords = ["garbage", "collection", "collector", "cycle", "rc"]
+categories = ["memory-management"]
 readme = "README.md"
 license = "CC0-1.0"
 edition = "2018"
