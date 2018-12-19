@@ -30,7 +30,7 @@ Start by adding an entry to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-rcgc = "0.1.0"
+rcgc = "0.0.0"
 ```
 
 Then import the crate into your Rust code:

@@ -42,7 +42,7 @@ fashion, but that's not important here)
 
 */
 
-#![doc(html_root_url = "https://docs.rs/rcgc/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/rcgc/0.0.0")]
 
 use log::trace;
 use std::cell::Cell;

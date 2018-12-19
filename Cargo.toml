@@ -1,6 +1,6 @@
 [package]
 name = "rcgc"
-version = "0.1.0"
+version = "0.0.0"
 authors = ["Jonas Schievink <jonasschievink@gmail.com>"]
 # TODO: Write description
 #description = ""
@@ -45,5 +45,3 @@ log = "0.4.6"
 [dev-dependencies]
 version-sync = "0.5"
 env_logger = "0.6.0"
-
-[workspace]
